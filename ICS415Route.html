@@ -1,0 +1,109 @@
+<template name="forumpage">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ryan's Final Web Project</a>
+            </div>
+        </div>
+    </nav>
+  <h2>Forum</h2>
+    {{> myformsite}}
+    <hr>
+    <footer>
+        <p>&copy; Ryan Buillard</p>
+    </footer>
+</template>
+
+<template name= "home">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ryan's Final Web Project</a>
+                <a class="navbar-brand" href="#">{{> loginButtons}}</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>South Shore Fishing Forum</h1>
+            <p>This forum site is for ICS415</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Enter Here &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>About This Site</h2>
+                <p>This will show you what my website is.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Posts</h2>
+                <p>I don't know what to link this to yet.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Pics</h2>
+                <p>If not interested in making account, view some content here.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <footer>
+        <h4>&copy; 2015 Ryan Buillard</h4>
+    </footer>
+</template>
+
+<template name="posts">
+    <h1>Posts:</h1>
+    <ul>
+        {{#each posts}}
+        <li>
+            <h3>{{title}}</h3>
+            <p><em>by {{username}}</em></p>
+            <p>{{body}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="form">
+    <form>
+        <label>Post Title:
+            <input type="text" id="title" />
+        </label>
+        <label>Post Body:
+            <textarea id="body"></textarea>
+        </label>
+        <input type="submit" value="Submit" id="submit"/>
+    </form>
+</template>
+
+<template name="myformsite">
+    {{> loginButtons}}
+    {{> posts}}
+    {{#if currentUser}}
+    {{>form}}
+    {{else}}
+    <p>Please log in to submit a new post.</p>
+    {{/if}}
+</template>
+
